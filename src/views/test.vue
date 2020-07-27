@@ -95,9 +95,9 @@
                         <button @click="takeHouseLoan()" class="bad-economy-no-btn btn">Nej</button>
                     </div>
                 </div>
-                <!-- <div v-show="goodEconomy" class="good-economy secondary-container">
+                <div v-show="goodEconomy" class="good-economy secondary-container">
                     <div class="good-economy-text">Du behöver inget privatlån.</div>
-                </div> -->
+                </div>
                 <div v-show="personalLoan" class="other-numbers-container secondary-container">
                     <div class="price-wrapper">
                         <div class="price-text">Ränta på privatlånet</div>
@@ -335,14 +335,19 @@ export default {
                 this.showHelp = false;
             },
             calulateMissingDownPayment() {
-                this.missedMoney;
-                this.missedMoney = this.calculatePropertyDownPayment.toFixed(0) - this.savings.toFixed(0)
+                
                 // console.log(this.missedMoney);
                 
-                if (this.savings.toFixed(0) >= this.calculatePropertyDownPayment.toFixed(0)) {
+                if (this.savings.toFixed(0) - this.calculatePropertyDownPayment.toFixed(0) >= 0) {
+                    this.missedMoney;
+                    this.missedMoney = this.calculatePropertyDownPayment.toFixed(0) - this.savings.toFixed(0)
                     this.goodEconomy = true
+                    this.badEconomy = false
                 } else {
+                    this.missedMoney;
+                    this.missedMoney = this.calculatePropertyDownPayment.toFixed(0) - this.savings.toFixed(0)
                     this.badEconomy = true
+                    this.goodEconomy = false
                 }
             },
             removeAllNumbers() {

@@ -1,5 +1,7 @@
 # houseloan
 
+Ville testa göra en lånekalkyl för att köpa ett hus. 
+
 ## Project setup
 ```
 npm install
